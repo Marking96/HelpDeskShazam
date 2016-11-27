@@ -3,6 +3,9 @@
  */
 package br.com.helpdesk.model;
 
+import br.com.helpdesk.Control.Observe;
+import java.util.ArrayList;
+
 /**
  * @author Marking
  *
@@ -16,6 +19,7 @@ public  class Usuario {
 	private String email;
 	private String senha;
 	private String areaatuacao;
+        private ArrayList<Observe> obs = new ArrayList<Observe>(); 
         
 	public Usuario() {
 		// TODO Auto-generated constructor stub
@@ -73,15 +77,28 @@ public  class Usuario {
 		this.senha = senha;
 	}
 	
-	public boolean doLogin (String nome,String senha){
+	public void doLogin (String nome,String senha){
 		if (nome.equals(this.getNome()) && senha.equals(this.getSenha()) ) {
-			return true;
+			logado = true;
 		}
-		return false;
+		notifyObservers();
 	}
 	
-    public  boolean  isLogado(){
-    	return logado;
-    };
+        public  boolean  isLogado(){
+            return logado;
+        };
 	
+        public void registerObserver(Observe ob){
+            obs.add(ob);
+        }
+        public void removeObserver(Observe ob){
+            obs.remove(ob);
+        }
+        
+        public void notifyObservers(){
+            for(Observe ob : obs){
+                ob.update();
+            }
+        }
+        
 }

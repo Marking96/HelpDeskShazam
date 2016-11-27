@@ -12,4 +12,9 @@ package br.com.helpdesk.Control;
 public interface Observe {
     
     public void update();
+    
+
+
+
+    
 }
