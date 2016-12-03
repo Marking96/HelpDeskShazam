@@ -16,6 +16,7 @@ public  class Usuario {
 	private String cpf;
 	private String telefone;
 	private boolean logado = false;
+        private boolean atende;
 	private String email;
 	private String senha;
 	private String areaatuacao;
@@ -34,6 +35,19 @@ public  class Usuario {
 		this.email = email;
 		this.senha = senha;
 	}
+
+        public Usuario(String nome, String cpf, String telefone, boolean atende, String email, String senha, String areaatuacao) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.atende = atende;
+        this.email = email;
+        this.senha = senha;
+        this.areaatuacao = areaatuacao;
+    }
+        
+        
+        
 	public int getId() {
 		return id;
 	}
@@ -58,12 +72,12 @@ public  class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	//public boolean isAtende() {
-	//	return atende;
-	//}
-	//public void setAtende(boolean atende) {
-	//	this.atende = atende;
-	//}
+	public boolean isAtende() {
+		return atende;
+	}
+	public void setAtende(boolean atende) {
+		this.atende = atende;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -76,6 +90,14 @@ public  class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+        public String getAreaatuacao() {
+        return areaatuacao;
+    }
+
+       public void setAreaatuacao(String areaatuacao) {
+        this.areaatuacao = areaatuacao;
+    }
 	
 	public void doLogin (String nome,String senha){
 		if (nome.equals(this.getNome()) && senha.equals(this.getSenha()) ) {

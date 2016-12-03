@@ -25,36 +25,30 @@ public class Tecnico extends Usuario{
 		// TODO Auto-generated constructor stub
 	}
 
+        public Tecnico(String nome, String cpf, String telefone, boolean atende, String email, String senha, String areaatuacao) {
+            super(nome, cpf, telefone, atende, email, senha, areaatuacao);
+        }
 
-
-	public Tecnico(String especiaridade, String atuação, ArrayList<Chamado> chamadosAtendidos) {
+     	public Tecnico(String especiaridade, String atuação, ArrayList<Chamado> chamadosAtendidos) {
 		super();
 		this.especiaridade = especiaridade;
 		this.atuação = atuação;
 		this.chamadosAtendidos = new ArrayList<>();
 	}
 
-	
-
 	public String getEspeciaridade() {
 		return especiaridade;
 	}
-
-
-
+        
 	public void setEspeciaridade(String especiaridade) {
 		this.especiaridade = especiaridade;
 	}
 
-
-
 	public String getAtuação() {
 		return atuação;
 	}
-
-
-
-	public void setAtuação(String atuação) {
+        
+        public void setAtuação(String atuação) {
 		this.atuação = atuação;
 	}
 
@@ -73,4 +67,6 @@ public class Tecnico extends Usuario{
 			
 		}
 	}
+        
+       
 }

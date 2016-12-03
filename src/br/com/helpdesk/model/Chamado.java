@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  */
 public class Chamado {
-	private int id;
+	private int id = 0;
 	private boolean atendido;
 	private Usuario autor;
 	private String titulo;
@@ -32,6 +32,14 @@ public class Chamado {
 		this.respostas = new ArrayList<>();
 	}
 
+    public Chamado(String titulo, String descricao, String grauPrioridade, String status) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.grauPrioridade = grauPrioridade;
+        this.status = status;
+    }
+        
+        
 	public Chamado() {
 		super();
 		this.respostas = new ArrayList<>();
