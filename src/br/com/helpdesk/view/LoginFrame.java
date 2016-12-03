@@ -5,6 +5,7 @@
  */
 package br.com.helpdesk.view;
 
+import br.com.helpdesk.Control.CadastraControl;
 import br.com.helpdesk.Control.LonginControl;
 import br.com.helpdesk.model.Usuario;
 import java.awt.Label;
@@ -22,8 +23,8 @@ import javax.swing.JTextField;
  * @author Marking
  */
 public class LoginFrame extends javax.swing.JFrame {
-    private Usuario model;
-    private LonginControl controller;
+    private LonginControl controllerLogin;
+    private CadastraControl ControllerCadastro;
     /**
      * Creates new form LoginFrame
      */
@@ -33,7 +34,8 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame(Usuario model) {
         super("HelpDesk Shasam");
         initComponents();
-        this.controller = new LonginControl(this, model);
+        this.controllerLogin = new LonginControl(this);
+        this.ControllerCadastro = new CadastraControl(this);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,7 +105,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        btCancela.setText("Cancelar");
+        btCancela.setText("Cancela");
         btCancela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelaActionPerformed(evt);
@@ -329,8 +331,6 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void btEntraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntraActionPerformed
-
-        btEntra.addActionListener(new Action());
         
     }//GEN-LAST:event_btEntraActionPerformed
 
@@ -392,20 +392,13 @@ public class LoginFrame extends javax.swing.JFrame {
     /*public void entra(){
         
     }*/
-    
-    private class Action implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent event){
-            controller.getEvent(event); 
-        }
-    }
  
     public String getTxtLogin() {
         return txtLogin.getText();
     }
 
-    public void setTxtLogin(JTextField txtLogin) {
-        this.txtLogin = txtLogin;
+    public void setTxtLogin(String txtLogin) {
+        this.txtLogin.setText(txtLogin);
     }
 
     public String getTxtSenha() {
@@ -414,6 +407,10 @@ public class LoginFrame extends javax.swing.JFrame {
             senha += txtSenha.getPassword()[i];
         }
         return senha;
+    }
+
+    public void setTxtSenha(String txtSenha) {
+        this.txtSenha.setText(txtSenha);
     }
 
     public String getTxtAtuação() {
@@ -455,6 +452,24 @@ public class LoginFrame extends javax.swing.JFrame {
     public String getjCAtende() {
         return (String) jCAtende.getSelectedItem();
     }
+
+    public JButton getjBCadastra() {
+        return jBCadastra;
+    }
+
+    public JButton getjBCancelar() {
+        return jBCancelar;
+    }
+
+    public JButton getBtCancela() {
+        return btCancela;
+    }
+
+    public JButton getBtEntra() {
+        return btEntra;
+    }
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

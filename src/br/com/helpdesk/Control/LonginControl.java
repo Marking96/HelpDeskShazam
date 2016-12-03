@@ -5,39 +5,49 @@ import java.util.Observer;
 import br.com.helpdesk.model.Usuario;
 import br.com.helpdesk.view.LoginFrame;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Marking
  */
-public class LonginControl implements Observe{
+public class LonginControl implements ActionListener {
     
     private LoginFrame view;
     private Usuario model;
 
-    public void update() {
-        if(model.isLogado()){
-            view.exibirMensag("Logado");
-        }else{
-            view.exibirMensag("Usuario ou senha incorretos!");
+
+    public LonginControl(LoginFrame view) {
+        this.view = view;
+        model = new Usuario();
+        adicionarListener();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getActionCommand().equals("Entra")){
+            
+            if (model.doLogin(view.getTxtLogin(), view.getTxtSenha())) {
+            //Camar janela principal;
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos!!");
+            }
+            
+            
+        }else if (ae.getActionCommand().equals("Cancela")) {
+            view.setTxtLogin("");
+            view.setTxtSenha("");
         }
     }
 
-    public LonginControl(LoginFrame view, Usuario model) {
-        this.view = view;
-        this.model = model;
-        model.registerObserver(this);
+    private void adicionarListener() {
+        view.getBtEntra().addActionListener(this);
+        view.getBtCancela().addActionListener(this);
     }
     
-    public void getEvent(ActionEvent event){
-        if(event.getActionCommand().equals("Entra")){
-            model.doLogin(view.getTxtLogin(), view.getTxtSenha());
-        }else{
-            if(event.getActionCommand().equals("Cancelar")){
-                //implementa
-            }
-        }
-    }
+    
+    
     
     
 }

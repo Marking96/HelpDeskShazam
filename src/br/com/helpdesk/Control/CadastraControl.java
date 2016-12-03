@@ -4,46 +4,49 @@ package br.com.helpdesk.Control;
 import br.com.helpdesk.model.Usuario;
 import br.com.helpdesk.view.LoginFrame;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Marking
  */
-public class CadastraControl implements Observe{
+public class CadastraControl implements ActionListener{
     
     private LoginFrame view;
     private Usuario model;
 
-    @Override
-    public void update() {
-        //implementar verificar se todos as variaveis não estão null em um metodo na fachada.
+    public CadastraControl(LoginFrame view) {
+        this.view = view;
+        model = new Usuario();
+        adicionarListener();
     }
 
-    public CadastraControl(LoginFrame view, Usuario model) {
-        this.view = view;
-        this.model = model;
-        model.registerObserver(this);
+    public void adicionarListener(){
+        view.getjBCadastra().addActionListener(this);
+        view.getjBCancelar().addActionListener(this);
     }
     
-    public void getEvent(ActionEvent event){
-        if(event.getActionCommand().equals("Criar Conta")){
-            model.setNome(view.getTxtNome());
-            model.setEmail(view.getTxtEmail());
-            model.setTelefone(view.getTxtTelefone());
-            model.setCpf(view.getTxtCPF());
-            model.setSenha(view.getTxtSenha());
-            model.setAreaatuacao(view.getTxtAtuação());
-            if(view.getjCAtende().equals("sim")){
-                model.setAtende(true);
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getActionCommand().equals("Criar Conta") ){
+            if (view.getTxtNome() == null || view.getTxtCPF() == null || view.getTxtEmail()  == null || view.getTxtTelefone()  == null || view.getTxtSenha()  == null || view.getTxtAtuação() == null) {
+                JOptionPane.showMessageDialog(null, "Você deixou campos vazio!!");
             }else{
-                model.setAtende(false);
-            }
-        }else{
-            if(event.getActionCommand().equals("Cancelar")){
-                //implementa
+                if (view.getTxtSenhaCada().equals(view.getTxtConfSenha())) {
+                model.setNome(view.getTxtNome());
+                model.setCpf(view.getTxtCPF());
+                model.setEmail(view.getTxtEmail());
+                model.setTelefone(view.getTxtTelefone());
+                model.setSenha(view.getTxtSenha());
+                model.setAreaatuacao(view.getTxtAtuação());
+                }else{
+                    JOptionPane.showMessageDialog(null, "Senhas estão diferentes");
+
+                }
             }
         }
-    }
-    
+    }   
     
 }

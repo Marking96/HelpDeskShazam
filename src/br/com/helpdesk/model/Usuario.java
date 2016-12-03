@@ -99,28 +99,17 @@ public  class Usuario {
         this.areaatuacao = areaatuacao;
     }
 	
-	public void doLogin (String nome,String senha){
+	public boolean doLogin (String nome,String senha){
 		if (nome.equals(this.getNome()) && senha.equals(this.getSenha()) ) {
-			logado = true;
-		}
-		notifyObservers();
+                        this.logado = true;
+			return true;
+                }
+                return false;
 	}
 	
         public  boolean  isLogado(){
             return logado;
         };
 	
-        public void registerObserver(Observe ob){
-            obs.add(ob);
-        }
-        public void removeObserver(Observe ob){
-            obs.remove(ob);
-        }
-        
-        public void notifyObservers(){
-            for(Observe ob : obs){
-                ob.update();
-            }
-        }
         
 }
