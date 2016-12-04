@@ -77,6 +77,8 @@ public class LoginFrame extends javax.swing.JFrame {
         txtSenhaCada = new javax.swing.JPasswordField();
         txtConfSenha = new javax.swing.JPasswordField();
         jCAtende = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txtTecnico = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -117,29 +119,27 @@ public class LoginFrame extends javax.swing.JFrame {
         LoginPanel2Layout.setHorizontalGroup(
             LoginPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addContainerGap(132, Short.MAX_VALUE)
                 .addGroup(LoginPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(LoginPanel2Layout.createSequentialGroup()
+                        .addComponent(btEntra, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btCancela, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LoginPanel2Layout.createSequentialGroup()
                         .addComponent(PasswordLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(LoginPanel2Layout.createSequentialGroup()
                         .addComponent(jUserLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGroup(LoginPanel2Layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(btEntra, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btCancela, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         LoginPanel2Layout.setVerticalGroup(
             LoginPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(LoginPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(50, 50, 50)
+                .addGroup(LoginPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jUserLabel))
                 .addGap(44, 44, 44)
@@ -150,7 +150,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(LoginPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEntra)
                     .addComponent(btCancela))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Entra", LoginPanel2);
@@ -187,17 +187,15 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jCAtende.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
 
+        jLabel2.setText("Tecnico em:");
+
         javax.swing.GroupLayout CadastraLayout = new javax.swing.GroupLayout(Cadastra);
         Cadastra.setLayout(CadastraLayout);
         CadastraLayout.setHorizontalGroup(
             CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastraLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CadastraLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCAtende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -231,8 +229,16 @@ public class LoginFrame extends javax.swing.JFrame {
                                     .addComponent(txtNome)
                                     .addComponent(txtEmail)
                                     .addComponent(txtTelefone)
-                                    .addComponent(txtCPF))))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                                    .addComponent(txtCPF)))))
+                    .addGroup(CadastraLayout.createSequentialGroup()
+                        .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCAtende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTecnico))))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         CadastraLayout.setVerticalGroup(
             CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +267,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jCAtende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(CadastraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -284,12 +294,12 @@ public class LoginFrame extends javax.swing.JFrame {
         CriaContaPanel.setLayout(CriaContaPanelLayout);
         CriaContaPanelLayout.setHorizontalGroup(
             CriaContaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
         );
         CriaContaPanelLayout.setVerticalGroup(
             CriaContaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CriaContaPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -312,13 +322,13 @@ public class LoginFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Entra , Cria conta");
@@ -381,18 +391,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
     }
-
-    public void exibirMensag(String texto){
-    	JDialog dialog = new JDialog();
-    	JLabel label = new JLabel();
-    	label.setText(texto);
-    	dialog.add(label);
-        System.out.println(texto);
-    }
-    /*public void entra(){
-        
-    }*/
- 
+    
     public String getTxtLogin() {
         return txtLogin.getText();
     }
@@ -451,6 +450,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
     public String getjCAtende() {
         return (String) jCAtende.getSelectedItem();
+              
+    }
+    
+    public JComboBox pegaJCAtende(){
+        return jCAtende;
     }
 
     public JButton getjBCadastra() {
@@ -468,7 +472,14 @@ public class LoginFrame extends javax.swing.JFrame {
     public JButton getBtEntra() {
         return btEntra;
     }
+
+    public JTextField getTxtTecnico() {
+        return txtTecnico;
+    }
     
+    public String pegarTxtTecnico(){
+        return txtTecnico.getText();
+    }
     
     
 
@@ -489,6 +500,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLSenha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -504,6 +516,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JPasswordField txtSenhaCada;
+    private javax.swing.JTextField txtTecnico;
     private javax.swing.JTextField txtTelefone;
     private javax.swing.JLabel txttelefone;
     // End of variables declaration//GEN-END:variables

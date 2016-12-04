@@ -97,8 +97,8 @@ public class Chamado {
 		return status;
 	}
 
-	public void setStatus() {
-		this.status = "Aberto";
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	public void setResp(String resposta){

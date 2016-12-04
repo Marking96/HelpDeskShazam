@@ -1,12 +1,13 @@
 package br.com.helpdesk.model;
 
 
+import br.com.helpdesk.DAO.DAO;
 import br.com.helpdesk.view.*;
 
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 		Tecnico t = new Tecnico(); 
 		Usuario user = t;
 		
@@ -28,8 +29,9 @@ public class main {
                 //s.responderChamado(c, "depois pesso mais coisas!!");
 		a.listaChamadosAtendidos();
 		//LoginScreen l = new LoginScreen();
-		
-                new LoginFrame(new Usuario());
+		DAO dao = new DAO();
+                dao.conectar();
+                //new LoginFrame(new Usuario());
                 //System.out.println(""+user.);
 	}
 	
