@@ -5,6 +5,11 @@
  */
 package br.com.helpdesk.view;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Marking
@@ -119,7 +124,23 @@ public class CriarChamado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtnEnviar() {
+        return btnEnviar;
+    }
 
+    public String getJcPrioridade() {
+        return (String) jcPrioridade.getSelectedItem();
+    }
+
+    public String getTxtDescricao() {
+        return txtDescricao.getText();
+    }
+
+    public String getTxtTitulo() {
+        return txtTitulo.getText();
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
     private javax.swing.JLabel jLDescricao;

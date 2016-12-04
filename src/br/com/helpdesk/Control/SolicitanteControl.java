@@ -39,9 +39,9 @@ public class SolicitanteControl implements ActionListener,MouseListener{
     @Override
     public void mouseClicked(MouseEvent me) {
         if(me.getSource()== view.getjMNovo()){
-        CriarChamado criar = new CriarChamado();
-        view.getjDPrincipal().add(criar);
-        criar.setVisible(true);
+            CriarChamado criar = new CriarChamado();
+            view.getjDPrincipal().add(criar);
+            criar.setVisible(true);
         }
         else if(me.getSource() == view.getjMExibir()){
             ListaChamado listaC = new ListaChamado();

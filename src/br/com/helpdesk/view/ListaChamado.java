@@ -46,11 +46,11 @@ public class ListaChamado extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Titulo", "Autor", "Prioridade", "Status"
+                "Titulo", "Prioridade", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

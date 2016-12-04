@@ -3,7 +3,9 @@
  */
 package br.com.helpdesk.model;
 
+import br.com.helpdesk.DAO.Chamadobd;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Marking
@@ -18,7 +20,7 @@ public class Chamado {
 	private String grauPrioridade;
 	private String status;
 	private ArrayList<String> respostas;
-	
+	private Chamadobd dao;
 	
 	public Chamado(int id, Usuario autor, String titulo, String descricao, String grauPrioridade, String status) {
 		super();
@@ -42,6 +44,7 @@ public class Chamado {
         
 	public Chamado() {
 		super();
+                dao = new Chamadobd();
 		this.respostas = new ArrayList<>();
 	}
 
@@ -61,6 +64,8 @@ public class Chamado {
 		this.atendido = atendido;
 	}
 
+        
+        
 	public Usuario getAutor() {
 		return autor;
 	}
@@ -106,7 +111,15 @@ public class Chamado {
 	}
 	public String getResp(){
             
-                return respostas.toString();
-            
+                return respostas.toString();   
+        }
+        
+        
+        public void salvar(Chamado cha){
+            dao.setChamado(cha);
+        }
+        
+        public List<Chamado> listar(){
+            return dao.getTodosChamados();
         }
 }

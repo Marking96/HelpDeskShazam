@@ -9,7 +9,7 @@ package br.com.helpdesk.Control;
  *
  * @author Marking
  */
-public interface Observe {
+public interface HeldeskDao {
     
     public void update();
     

@@ -21,7 +21,7 @@ public class Chamadobd implements ChamadoDao{
     
     private Connection conectar;
 
-    public Chamadobd(Connection conectar) {
+    public Chamadobd() {
         this.conectar = new DAO().conectar();
     }
     
@@ -31,7 +31,7 @@ public class Chamadobd implements ChamadoDao{
     public List<Chamado> getTodosChamados() {
         try {
             List<Chamado> chamados = new ArrayList<Chamado>();
-            PreparedStatement stmt = conectar.prepareStatement("select * from chamado");
+            PreparedStatement stmt = conectar.prepareStatement("select * from Chamado");
             ResultSet rs = stmt.executeQuery();
             
             while (rs.next()) {                
@@ -60,7 +60,7 @@ public class Chamadobd implements ChamadoDao{
 
     @Override
     public void setChamado(Chamado chamado) {
-        String query = "insert into chamado (titulo,descricao,status,prioridade) values(?,?,?,?)";
+        String query = "insert into Chamado (titulo,descricao,status,prioridade,atendido) values(?,?,?,?,?)";
     
         try{
             PreparedStatement stmt = conectar.prepareStatement(query);
@@ -69,6 +69,7 @@ public class Chamadobd implements ChamadoDao{
             stmt.setString(2, chamado.getDescricao());
             stmt.setString(3, chamado.getStatus());
             stmt.setString(4, chamado.getGrauPrioridade());
+            stmt.setBoolean(5, chamado.isAtendido());
             
             stmt.execute();
             stmt.close();
@@ -79,7 +80,7 @@ public class Chamadobd implements ChamadoDao{
 
     @Override
     public void atualizarChamado(Chamado chamado) {
-        String query = "update chamado set titulo = ?,descricao = ?,stattus = ?,prioridade = ? where id = ?";
+        String query = "update Chamado set titulo = ?,descricao = ?,stattus = ?,prioridade = ? where id = ?";
         
         try{
             PreparedStatement stmt = conectar.prepareStatement(query);
@@ -100,7 +101,7 @@ public class Chamadobd implements ChamadoDao{
     @Override
     public void deletaChamado(Chamado chamado) {
         try {
-            PreparedStatement stmt = conectar.prepareStatement("delete from chamado where id=?");
+            PreparedStatement stmt = conectar.prepareStatement("delete from Chamado where id=?");
             stmt.setInt(1, chamado.getId());
             stmt.execute();
             stmt.close();

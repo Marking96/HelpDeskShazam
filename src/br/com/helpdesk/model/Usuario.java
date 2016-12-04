@@ -3,8 +3,8 @@
  */
 package br.com.helpdesk.model;
 
-import br.com.helpdesk.Control.Observe;
 import java.util.ArrayList;
+import br.com.helpdesk.Control.HeldeskDao;
 
 /**
  * @author Marking
@@ -20,7 +20,7 @@ public  class Usuario {
 	private String email;
 	private String senha;
 	private String areaatuacao;
-        private ArrayList<Observe> obs = new ArrayList<Observe>(); 
+        private ArrayList<HeldeskDao> obs = new ArrayList<HeldeskDao>(); 
         
 	public Usuario() {
 		// TODO Auto-generated constructor stub
