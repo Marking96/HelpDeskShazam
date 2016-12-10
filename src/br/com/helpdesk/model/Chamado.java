@@ -122,4 +122,8 @@ public class Chamado {
         public List<Chamado> listar(){
             return dao.getTodosChamados();
         }
+        
+        public Chamado getChamado(String titulo){
+            return dao.getChamado(titulo);
+        }
 }

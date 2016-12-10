@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -55,7 +55,29 @@ public class Chamadobd implements ChamadoDao{
 
     @Override
     public Chamado getChamado(String titulo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // String query = ;
+         
+        
+        try {
+            Chamado chamado = new Chamado();
+            PreparedStatement stmt = conectar.prepareStatement("select * from Chamado where titulo = '"+titulo+"'");
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+            chamado.setId(rs.getInt("id"));
+            chamado.settitulo(rs.getString("titulo"));
+            chamado.setDescricao(rs.getString("descricao"));
+            chamado.setStatus (rs.getString("status"));
+            chamado.setGrauPrioridade(rs.getString("prioridade"));
+            chamado.setAtendido(rs.getBoolean("atendido"));
+            
+            rs.close();
+            stmt.close();
+            
+            }
+            return chamado;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

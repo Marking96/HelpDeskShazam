@@ -1,26 +1,19 @@
-
 package br.com.helpdesk.Control;
 
 import br.com.helpdesk.model.Chamado;
-import br.com.helpdesk.view.AtendeChamado;
+import br.com.helpdesk.model.ListenerAdapter;
 import br.com.helpdesk.view.ListaChamado;
 import br.com.helpdesk.view.SolicitantePrincipal;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JLabel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Marking
  */
-public class ListaChamadoControl implements ActionListener,MouseListener{
+public class ListaChamadoControl extends ListenerAdapter{
+
     private ListaChamado view;
     private SolicitantePrincipal viewS;
     private Chamado model;
@@ -32,56 +25,41 @@ public class ListaChamadoControl implements ActionListener,MouseListener{
         adicinaListener();
         lista();
     }
-    
-    public void lista(){
+
+    public void lista() {
         DefaultTableModel tChamados = (DefaultTableModel) view.getjTChamados().getModel();
-        
-        for(Chamado c: model.listar()){
+
+        for (Chamado c : model.listar()) {
             tChamados.addRow(new Object[]{
-               c.gettitulo(),
+                c.gettitulo(),
                 c.getGrauPrioridade(),
                 c.getStatus()
             });
         }
-       
+
     }
-    
-    public void adicinaListener(){
+
+    public void adicinaListener() {
         view.getjTChamados().addMouseListener(this);
-        
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-    }
-    @Override
-    public void mouseClicked(MouseEvent me) {
-        if (me.getClickCount() == 2 ){
-            String c = (String) (view.getjTChamados().getValueAt(view.getjTChamados().getSelectedRow(), 0));
-            System.out.println(c.toString());
-            AtendeChamado atChamado = new AtendeChamado();
-            viewS.getjDPrincipal().add(atChamado);
-            atChamado.setVisible(true);
+        if(ae.getActionCommand() == "Enviar"){
+            
         }
     }
 
     @Override
-    public void mousePressed(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent me) {
+    public void mouseClicked(MouseEvent me) {
+        if (me.getClickCount() == 2) {
+            if(view.getjTChamados().getSelectedRow() != -1){
+                view.getTxtTitulo().setText(view.getjTChamados().getValueAt(view.getjTChamados().getSelectedRow(), 0).toString());
+                view.getTxtPriori().setText(view.getjTChamados().getValueAt(view.getjTChamados().getSelectedRow(), 1).toString());
+                view.getTxtStatus().setText(view.getjTChamados().getValueAt(view.getjTChamados().getSelectedRow(), 2).toString());
+                //view.getTxtDescrição().setText(view.getjTChamados().getValueAt(view.getjTChamados().getSelectedRow(), 3).toString());
+            }
+        }
     }
 
 }
-    
-    
-

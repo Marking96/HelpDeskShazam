@@ -45,8 +45,8 @@ public class SolicitanteControl implements ActionListener,MouseListener{
         }
         else if(me.getSource() == view.getjMExibir()){
             ListaChamado listaC = new ListaChamado();
-            view.getjDPrincipal().add(listaC);
-            listaC.setVisible(true);
+            view.getjDPrincipal().add(listaC).setVisible(true);
+            //listaC.setVisible(true);
         }else if(me.getSource() == view.getjMSair()){
             new LoginFrame().setVisible(true);
             view.dispose();

@@ -12,7 +12,7 @@ public class Faixada {
     
     public void cadastro(String nome, String email,String telefone,String cpf,String senha,String areaatuacao,boolean atende ){
         if(atende){
-            Tecnico tecnico = new Tecnico(nome, cpf, telefone, atende, email, senha, areaatuacao); 
+           // Tecnico tecnico = new Tecnico(nome, cpf, telefone, atende, email, senha, areaatuacao); 
          }else{
              Solicitante solicitante = new Solicitante(nome, cpf, telefone, atende, email, senha, areaatuacao);
          }
