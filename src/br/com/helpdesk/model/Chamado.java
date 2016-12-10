@@ -44,7 +44,7 @@ public class Chamado {
         
 	public Chamado() {
 		super();
-                dao = new Chamadobd();
+                dao = Chamadobd.getinstacia();
 		this.respostas = new ArrayList<>();
 	}
 

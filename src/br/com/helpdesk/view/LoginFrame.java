@@ -481,7 +481,6 @@ public class LoginFrame extends javax.swing.JFrame {
         return txtTecnico.getText();
     }
     
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cadastra;

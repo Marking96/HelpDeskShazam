@@ -1,7 +1,7 @@
 package br.com.helpdesk.model;
 
 
-import br.com.helpdesk.DAO.DAO;
+import br.com.helpdesk.DAO.HelpDeskDaoFactory;
 import br.com.helpdesk.view.*;
 
 
@@ -33,10 +33,10 @@ public class main {
                 //s.responderChamado(c, "depois pesso mais coisas!!");
 		a.listaChamadosAtendidos();
 		//LoginScreen l = new LoginScreen();
-		//DAO dao = new DAO();
+		//DAO dao = new HelpDeskDaoFactory();
                 //dao.conectar();
                 //c.salvar(c);
-                new SolicitantePrincipal().setVisible(true); 
+                new Tela_Primcipal().setVisible(true); 
                 //new LoginFrame(new Usuario());
                 //System.out.println(""+user.);
 	}

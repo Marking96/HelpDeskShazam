@@ -5,7 +5,7 @@ package br.com.helpdesk.Control;
 import br.com.helpdesk.view.CriarChamado;
 import br.com.helpdesk.view.ListaChamado;
 import br.com.helpdesk.view.LoginFrame;
-import br.com.helpdesk.view.SolicitantePrincipal;
+import br.com.helpdesk.view.Tela_Primcipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -17,9 +17,9 @@ import java.awt.event.MouseListener;
  * @author Marking
  */
 public class SolicitanteControl implements ActionListener,MouseListener{
-    private SolicitantePrincipal view;
+    private Tela_Primcipal view;
 
-    public SolicitanteControl(SolicitantePrincipal view) {
+    public SolicitanteControl(Tela_Primcipal view) {
         this.view = view;
         adicionarListener();
     }

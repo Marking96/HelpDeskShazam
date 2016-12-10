@@ -13,7 +13,7 @@ import javax.swing.JMenu;
  *
  * @author Marking
  */
-public class SolicitantePrincipal extends javax.swing.JFrame {
+public class Tela_Primcipal extends javax.swing.JFrame {
 
     private SolicitanteControl solicitanteControl;
     
@@ -21,7 +21,7 @@ public class SolicitantePrincipal extends javax.swing.JFrame {
     /**
      * Creates new form SolicitantePrincipal
      */
-    public SolicitantePrincipal() {
+    public Tela_Primcipal() {
         initComponents();
         solicitanteControl = new SolicitanteControl(this);
     }
@@ -103,20 +103,21 @@ public class SolicitantePrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SolicitantePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Primcipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SolicitantePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Primcipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SolicitantePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Primcipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SolicitantePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Primcipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SolicitantePrincipal().setVisible(true);
+                new Tela_Primcipal().setVisible(true);
             }
         });
     }

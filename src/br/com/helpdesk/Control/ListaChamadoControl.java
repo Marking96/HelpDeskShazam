@@ -3,7 +3,7 @@ package br.com.helpdesk.Control;
 import br.com.helpdesk.model.Chamado;
 import br.com.helpdesk.model.ListenerAdapter;
 import br.com.helpdesk.view.ListaChamado;
-import br.com.helpdesk.view.SolicitantePrincipal;
+import br.com.helpdesk.view.Tela_Primcipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
 public class ListaChamadoControl extends ListenerAdapter{
 
     private ListaChamado view;
-    private SolicitantePrincipal viewS;
+    private Tela_Primcipal viewS;
     private Chamado model;
 
     public ListaChamadoControl(ListaChamado view) {
         this.view = view;
-        viewS = new SolicitantePrincipal();
+        viewS = new Tela_Primcipal();
         model = new Chamado();
         adicinaListener();
         lista();
