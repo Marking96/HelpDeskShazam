@@ -20,7 +20,5 @@ public class Solicitante extends Usuario{
 		Chamado cha = new Chamado();
 		
 	}
-        public void responderChamado(Chamado c, String resposta){
-            c.setResp(resposta);
-        }
+       
 }

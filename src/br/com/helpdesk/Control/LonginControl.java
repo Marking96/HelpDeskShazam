@@ -1,7 +1,6 @@
 
 package br.com.helpdesk.Control;
-import java.util.Observable;
-import java.util.Observer;
+import br.com.helpdesk.DAO.HelpDeskDaoFactory;
 import br.com.helpdesk.model.Usuario;
 import br.com.helpdesk.view.LoginFrame;
 import br.com.helpdesk.view.Tela_Primcipal;
@@ -17,6 +16,7 @@ public class LonginControl implements ActionListener {
     
     private LoginFrame view;
     private Usuario model;
+    private HelpDeskDaoFactory dao = HelpDeskDaoFactory.getintancia();
 
 
     public LonginControl(LoginFrame view) {
@@ -28,11 +28,21 @@ public class LonginControl implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getActionCommand().equals("Entra")){
-            
-            if (model.Login(view.getTxtSenha(), view.getTxtLogin()) == "tecnico") {
-                new Tela_Primcipal().setVisible(true);
+           if (model.Login(view.getTxtSenha(), view.getTxtLogin()) == "tecnico") {
+               
+                Usuario user = model.getuser(view.getTxtEmail());
+                new Tela_Primcipal(user).setVisible(true);
+                view.dispose();
                 
+            }else if(model.Login(view.getTxtSenha(), view.getTxtLogin()) == "comum"){ 
                 
+                Usuario user = model.getuser(view.getTxtEmail());
+                System.out.println(user.getNome());
+                new Tela_Primcipal(user).setVisible(true); 
+                 view.dispose();
+                 
+            }else if("".equals(view.getTxtSenha()) || "".equals(view.getTxtLogin())){
+                JOptionPane.showMessageDialog(null, "Campus em branco");
             }else{
                 JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos!!");
             }  

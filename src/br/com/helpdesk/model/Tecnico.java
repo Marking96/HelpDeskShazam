@@ -53,7 +53,7 @@ public class Tecnico {
     }
 
     public void atenderChamado(Chamado c, String resposta) {
-        c.setResp(resposta);
+        //c.setResp(resposta);
         chamadosAtendidos.add(c);
         c.setAtendido(true);
     }
@@ -62,7 +62,7 @@ public class Tecnico {
         for (int i = 0; i < chamadosAtendidos.size(); i++) {
             System.out.println("Titulo: " + chamadosAtendidos.get(i).gettitulo());
             System.out.println("Descrição: " + chamadosAtendidos.get(i).getDescricao());
-            System.out.println("" + chamadosAtendidos.get(i).getResp());
+           // System.out.println("" + chamadosAtendidos.get(i).getResp());
             //System.out.println("Autor: "+chamadosAtendidos.get(i).getAutor().getNome());
 
         }

@@ -6,6 +6,7 @@ package br.com.helpdesk.model;
 import java.util.ArrayList;
 import br.com.helpdesk.Control.HeldeskDao;
 import br.com.helpdesk.DAO.Chamadobd;
+import java.util.List;
 
 /**
  * @author Marking
@@ -26,7 +27,7 @@ public  class Usuario {
         
 	public Usuario() {
                 dao = Chamadobd.getinstacia();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Usuario(int id, String nome, String cpf, String telefone, boolean atende, String email, String senha) {
 		super();
@@ -121,5 +122,12 @@ public  class Usuario {
        public String Login(String senha,String email){
                return dao.login(senha, email);
        }
-        
+       
+       public Usuario getuser(String email){
+           return dao.getUsuario(email);
+       }
+       
+       public List<Usuario> getusers(String email){
+           return dao.getTodosUser(email);
+       }
 }

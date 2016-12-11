@@ -5,6 +5,7 @@
  */
 package br.com.helpdesk.view;
 
+import br.com.helpdesk.Control.CriarChamadoControl;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
@@ -15,12 +16,13 @@ import javax.swing.JTextField;
  * @author Marking
  */
 public class CriarChamado extends javax.swing.JInternalFrame {
-
+    private CriarChamadoControl control;
     /**
      * Creates new form CriarChamado
      */
     public CriarChamado() {
         initComponents();
+        control = new CriarChamadoControl(this);
     }
 
     /**
@@ -64,7 +66,7 @@ public class CriarChamado extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(150, 150, 150)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +85,7 @@ public class CriarChamado extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +120,7 @@ public class CriarChamado extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,13 +134,15 @@ public class CriarChamado extends javax.swing.JInternalFrame {
         return (String) jcPrioridade.getSelectedItem();
     }
 
-    public String getTxtDescricao() {
-        return txtDescricao.getText();
+    public JTextArea getTxtDescricao() {
+        return txtDescricao;
     }
 
-    public String getTxtTitulo() {
-        return txtTitulo.getText();
+    public JTextField getTxtTitulo() {
+        return txtTitulo;
     }
+
+    
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

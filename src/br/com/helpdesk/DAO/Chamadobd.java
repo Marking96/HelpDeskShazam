@@ -99,13 +99,13 @@ public class Chamadobd implements ChamadoDao {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("insert into Chamado (titulo,descricao,status,prioridade,atendido) values(?,?,?,?,?)");
+            stmt = con.prepareStatement("insert into Chamado (titulo,descricao,status,prioridade,atendido,id_autor) values(?,?,?,?,?,?)");
             stmt.setString(1, chamado.gettitulo());
             stmt.setString(2, chamado.getDescricao());
             stmt.setString(3, chamado.getStatus());
             stmt.setString(4, chamado.getGrauPrioridade());
             stmt.setBoolean(5, chamado.isAtendido());
-
+            stmt.setInt(6, chamado.getAutor().getId());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Chamadobd.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,7 +116,7 @@ public class Chamadobd implements ChamadoDao {
 
     @Override
     public void atualizarChamado(Chamado chamado) {
-        String query = "update Chamado set titulo = ?,descricao = ?,stattus = ?,prioridade = ? where id = ?";
+        String query = "update Chamado set titulo = ?,descricao = ?,status = ?,prioridade = ? where id = ?";
         Connection con = dao.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -182,7 +182,7 @@ public class Chamadobd implements ChamadoDao {
     }
 
     public String login(String senha, String email) {
-        String query = "select * from usuario where email like '" + email + "' and senha like '" + senha+"'";
+        String query = "select * from usuario where email = '" + email + "' and senha ='" + senha+"'";
         Connection con = dao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -190,7 +190,7 @@ public class Chamadobd implements ChamadoDao {
             stmt = con.prepareStatement(query);
             rs = stmt.executeQuery();
 
-            if (rs.isFirst() && rs.getBoolean("atende")) {
+            if (rs.first() && rs.getBoolean("atende")) {
                
                 return "tecnico";
             } else if (rs.first() && !rs.getBoolean("atende")) {
@@ -206,5 +206,105 @@ public class Chamadobd implements ChamadoDao {
         } finally {
            dao.closeConnection(con, stmt, rs);
         }
+    }
+    
+    public Usuario getUsuario(String email){
+        Usuario us = new Usuario();
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            
+            stmt = con.prepareStatement("select * from usuario where email = '" + email + "'");
+            rs = stmt.executeQuery();
+            
+            if(rs.first()){
+                us.setNome(rs.getString("nome"));
+                us.setEmail(rs.getString("email"));
+                us.setCpf(rs.getString("cpf"));
+                us.setAreaatuacao(rs.getString("areatuacao"));
+                us.setTelefone(rs.getString("telefone"));
+                us.setSenha(rs.getString("senha"));
+                us.setId(rs.getInt("id"));
+            }
+            
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            dao.closeConnection(con, stmt, rs);
+        }
+        return us;
+    }
+    public List<Usuario> getTodosUser(String email) {
+        List<Usuario> users = new ArrayList<Usuario>();
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("select * from usuario where email = '" + email + "'");
+            rs = stmt.executeQuery();
+            while (rs.first()) {
+                Usuario us = new Usuario();
+                us.setNome(rs.getString("nome"));
+                us.setEmail(rs.getString("email"));
+                us.setCpf(rs.getString("cpf"));
+                us.setAreaatuacao(rs.getString("areatuacao"));
+                us.setTelefone(rs.getString("telefone"));
+                us.setSenha(rs.getString("senha"));
+                us.setId(rs.getInt("id"));
+
+                users.add(us);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Chamadobd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            dao.closeConnection(con, stmt, rs);
+        }
+        return users;
+    }
+    
+    public void setusuario(Chamado c) {
+        String query = "insert into resposta (id_chmado,resposta) values(?,?)";
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement(query);
+
+            stmt.setInt(1, c.getId());
+            stmt.setString(2, c.getRespostas());
+
+            stmt.executeUpdate();
+            
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            dao.closeConnection(con, stmt);
+        }
+    }
+    public List<String> getResposta(int id){
+        String query = "SELECT `resposta` FROM `resposta` WHERE `id_chamado`= "+id;
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<String> respostas = new ArrayList<String>();  ;
+        try {
+             stmt = con.prepareStatement(query);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+               
+                String resposta = rs.getString("resposta");
+                respostas.add(resposta);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Chamadobd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            dao.closeConnection(con, stmt, rs);
+        }
+        return respostas;
     }
 }

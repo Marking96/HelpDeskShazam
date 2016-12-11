@@ -36,7 +36,7 @@ public class main {
 		//DAO dao = new HelpDeskDaoFactory();
                 //dao.conectar();
                 //c.salvar(c);
-                new Tela_Primcipal().setVisible(true); 
+               // new Tela_Primcipal().setVisible(true); 
                 //new LoginFrame(new Usuario());
                 //System.out.println(""+user.);
 	}

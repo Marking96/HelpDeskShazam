@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.helpdesk.model;
 
@@ -12,27 +12,28 @@ import java.util.List;
  *
  */
 public class Chamado {
-	private int id = 0;
-	private boolean atendido;
-	private Usuario autor;
-	private String titulo;
-	private String descricao;
-	private String grauPrioridade;
-	private String status;
-	private ArrayList<String> respostas;
-	private Chamadobd dao;
-	
-	public Chamado(int id, Usuario autor, String titulo, String descricao, String grauPrioridade, String status) {
-		super();
-		this.id = id;
-		this.atendido = false;
-		this.autor = autor;
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.grauPrioridade = grauPrioridade;
-		this.status = status;
-		this.respostas = new ArrayList<>();
-	}
+
+    private int id = 0;
+    private boolean atendido;
+    private Usuario autor;
+    private String titulo;
+    private String descricao;
+    private String grauPrioridade;
+    private String status = "Aguardando";
+    private String respostas;
+    private Chamadobd dao;
+
+    public Chamado(int id, Usuario autor, String titulo, String descricao, String grauPrioridade, String status) {
+        super();
+        this.id = id;
+        this.atendido = false;
+        this.autor = autor;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.grauPrioridade = grauPrioridade;
+        this.status = status;
+        
+    }
 
     public Chamado(String titulo, String descricao, String grauPrioridade, String status) {
         this.titulo = titulo;
@@ -40,90 +41,99 @@ public class Chamado {
         this.grauPrioridade = grauPrioridade;
         this.status = status;
     }
+
+    public Chamado() {
+        super();
+        dao = Chamadobd.getinstacia();
         
-        
-	public Chamado() {
-		super();
-                dao = Chamadobd.getinstacia();
-		this.respostas = new ArrayList<>();
-	}
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public boolean isAtendido() {
-		return atendido;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setAtendido(boolean atendido) {
-		this.atendido = atendido;
-	}
+    public boolean isAtendido() {
+        return atendido;
+    }
 
-        
-        
-	public Usuario getAutor() {
-		return autor;
-	}
+    public void setAtendido(boolean atendido) {
+        this.atendido = atendido;
+    }
 
-	public void setAutor(Usuario autor) {
-		this.autor = autor;
-	}
+    public Usuario getAutor() {
+        return autor;
+    }
 
-	public String gettitulo() {
-		return titulo;
-	}
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
+    }
 
-	public void settitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    public String gettitulo() {
+        return titulo;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public void settitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public String getGrauPrioridade() {
-		return grauPrioridade;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setGrauPrioridade(String grauPrioridade) {
-		this.grauPrioridade = grauPrioridade;
-	}
+    public String getGrauPrioridade() {
+        return grauPrioridade;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setGrauPrioridade(String grauPrioridade) {
+        this.grauPrioridade = grauPrioridade;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	public void setResp(String resposta){
-		this.respostas.add(resposta);
-	}
-	public String getResp(){
-            
-                return respostas.toString();   
-        }
-        
-        
-        public void salvar(Chamado cha){
-            dao.setChamado(cha);
-        }
-        
-        public List<Chamado> listar(){
-            return dao.getTodosChamados();
-        }
-        
-        public Chamado getChamado(String titulo){
-            return dao.getChamado(titulo);
-        }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRespostas() {
+        return respostas;
+    }
+
+    public void setRespostas(String respostas) {
+        this.respostas = respostas;
+    }
+
+    
+
+    public void salvar(Chamado cha) {
+        dao.setChamado(cha);
+    }
+
+    public List<Chamado> listar() {
+        return dao.getTodosChamados();
+    }
+
+    public Chamado getChamado(String titulo) {
+        return dao.getChamado(titulo);
+    }
+    
+    public void delete(Chamado c){
+        dao.deletaChamado(c);
+    }
+    
+    public void updade(Chamado c){
+        dao.atualizarChamado(c);
+    }
+    public List<String> listarespostas(int id){
+        return dao.getResposta(id);
+    }
 }

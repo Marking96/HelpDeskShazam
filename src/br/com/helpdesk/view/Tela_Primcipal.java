@@ -5,7 +5,8 @@
  */
 package br.com.helpdesk.view;
 
-import br.com.helpdesk.Control.SolicitanteControl;
+import br.com.helpdesk.Control.TelaPControl;
+import br.com.helpdesk.model.Usuario;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
 
@@ -15,15 +16,19 @@ import javax.swing.JMenu;
  */
 public class Tela_Primcipal extends javax.swing.JFrame {
 
-    private SolicitanteControl solicitanteControl;
-    
+    private TelaPControl solicitanteControl;
+    private static Usuario user;
     
     /**
      * Creates new form SolicitantePrincipal
      */
-    public Tela_Primcipal() {
+    public Tela_Primcipal(Usuario user) {
         initComponents();
-        solicitanteControl = new SolicitanteControl(this);
+        this.user = user;
+        solicitanteControl = new TelaPControl(this,user);
+    }
+
+    private Tela_Primcipal() {
     }
 
     /**
@@ -37,27 +42,18 @@ public class Tela_Primcipal extends javax.swing.JFrame {
 
         jDPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMNovo = new javax.swing.JMenu();
         jMExibir = new javax.swing.JMenu();
+        jMLista = new javax.swing.JMenu();
         jMSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Helpdesk");
 
-        jMNovo.setText("Novo");
-        jMNovo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMNovoMouseClicked(evt);
-            }
-        });
-        jMNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMNovoActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMNovo);
-
-        jMExibir.setText("Exibir Todos");
+        jMExibir.setText("Chamados");
         jMenuBar1.add(jMExibir);
+
+        jMLista.setText("Lista Chamados");
+        jMenuBar1.add(jMLista);
 
         jMSair.setText("Sair");
         jMenuBar1.add(jMSair);
@@ -77,14 +73,6 @@ public class Tela_Primcipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMNovoActionPerformed
-      
-    }//GEN-LAST:event_jMNovoActionPerformed
-
-    private void jMNovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMNovoMouseClicked
-       
-    }//GEN-LAST:event_jMNovoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -117,17 +105,13 @@ public class Tela_Primcipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Primcipal().setVisible(true);
+                new Tela_Primcipal(user).setVisible(true);
             }
         });
     }
 
     public JMenu getjMExibir() {
         return jMExibir;
-    }
-
-    public JMenu getjMNovo() {
-        return jMNovo;
     }
 
     public JDesktopPane getjDPrincipal() {
@@ -142,7 +126,7 @@ public class Tela_Primcipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDPrincipal;
     private javax.swing.JMenu jMExibir;
-    private javax.swing.JMenu jMNovo;
+    private javax.swing.JMenu jMLista;
     private javax.swing.JMenu jMSair;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables

@@ -4,18 +4,14 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMNovo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Novo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMNovoMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMNovoActionPerformed"/>
-          </Events>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMExibir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Exibir Todos"/>
+            <Property name="text" type="java.lang.String" value="Chamados"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMLista">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lista Chamados"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMSair">
@@ -28,6 +24,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Helpdesk"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
