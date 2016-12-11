@@ -136,4 +136,19 @@ public class Chamado {
     public List<String> listarespostas(int id){
         return dao.getResposta(id);
     }
+    public void Comentar(Chamado c){
+         dao.setResposta(c);
+    }
+    
+    public void alteraStatus(Chamado c){
+        dao.AlteraStatus(c);
+    }
+    
+    public List<Chamado> listarAtendido() {
+        return dao.getTodosChamadosAtendido();
+    }
+    
+    public void reabrir(Chamado c){
+        dao.ReabrirChamado(c);
+    }
 }

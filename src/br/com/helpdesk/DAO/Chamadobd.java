@@ -6,6 +6,7 @@
 package br.com.helpdesk.DAO;
 
 import br.com.helpdesk.model.Chamado;
+import br.com.helpdesk.model.Tecnico;
 import br.com.helpdesk.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -266,8 +267,8 @@ public class Chamadobd implements ChamadoDao {
         return users;
     }
     
-    public void setusuario(Chamado c) {
-        String query = "insert into resposta (id_chmado,resposta) values(?,?)";
+    public void setResposta(Chamado c) {
+        String query = "insert into resposta (id_chamado,resposta) values(?,?)";
         Connection con = dao.getConnection();
         PreparedStatement stmt = null;
         
@@ -306,5 +307,95 @@ public class Chamadobd implements ChamadoDao {
             dao.closeConnection(con, stmt, rs);
         }
         return respostas;
+    }
+    
+    public void AlteraStatus (Chamado chamado){
+        String query = "update Chamado set status = 'Atendido' where id = ?";
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(query);
+
+            stmt.setInt(1, chamado.getId());
+            
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            dao.closeConnection(con, stmt);
+        }
+    }
+    
+    public List<Chamado> getTodosChamadosAtendido() {
+        List<Chamado> chamados = new ArrayList<Chamado>();
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("select * from Chamado where status LIKE Atendido");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Chamado chamado = new Chamado();
+                chamado.setId(rs.getInt("id"));
+                chamado.settitulo(rs.getString("titulo"));
+                chamado.setDescricao(rs.getString("descricao"));
+                chamado.setStatus(rs.getString("status"));
+                chamado.setGrauPrioridade(rs.getString("prioridade"));
+                chamado.setAtendido(rs.getBoolean("atendido"));
+
+                chamados.add(chamado);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Chamadobd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            dao.closeConnection(con, stmt, rs);
+        }
+        return chamados;
+    }
+    
+    public void ReabrirChamado (Chamado chamado){
+        String query = "update Chamado set status = 'Aguardando' where id = ?";
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(query);
+
+            stmt.setInt(1, chamado.getId());
+            
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            dao.closeConnection(con, stmt);
+        }
+    }
+    
+     public void setTecnico(Tecnico user) {
+        String query = "insert into usuario (nome,email,cpf,telefone,areaatuacao,senha) values(?,?,?,?,?,?)";
+        Connection con = dao.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement(query);
+
+            stmt.setString(1, user.getUser().getNome());
+            stmt.setString(2, user.getUser().getEmail());
+            stmt.setString(3, user.getUser().getCpf());
+            stmt.setString(4, user.getUser().getTelefone());
+            stmt.setString(5, user.getUser().getAreaatuacao());
+            stmt.setString(6, user.getUser().getSenha());
+
+            stmt.executeUpdate();
+            
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            dao.closeConnection(con, stmt);
+        }
     }
 }

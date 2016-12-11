@@ -6,17 +6,22 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMExibir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Chamados"/>
+            <Property name="text" type="java.lang.String" value="Meus Chamados  "/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMLista">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Lista Chamados"/>
+            <Property name="text" type="java.lang.String" value="  Atender Chamados  "/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMSobre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="  Sobre  "/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMSair">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="text" type="java.lang.String" value="  Sair  "/>
           </Properties>
         </Menu>
       </SubComponents>

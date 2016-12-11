@@ -44,18 +44,22 @@ public class Tela_Primcipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMExibir = new javax.swing.JMenu();
         jMLista = new javax.swing.JMenu();
+        jMSobre = new javax.swing.JMenu();
         jMSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Helpdesk");
 
-        jMExibir.setText("Chamados");
+        jMExibir.setText("Meus Chamados  ");
         jMenuBar1.add(jMExibir);
 
-        jMLista.setText("Lista Chamados");
+        jMLista.setText("  Atender Chamados  ");
         jMenuBar1.add(jMLista);
 
-        jMSair.setText("Sair");
+        jMSobre.setText("  Sobre  ");
+        jMenuBar1.add(jMSobre);
+
+        jMSair.setText("  Sair  ");
         jMenuBar1.add(jMSair);
 
         setJMenuBar(jMenuBar1);
@@ -122,12 +126,21 @@ public class Tela_Primcipal extends javax.swing.JFrame {
         return jMSair;
     }
 
+    public JMenu getjMLista() {
+        return jMLista;
+    }
+
+    public JMenu getjMSobre() {
+        return jMSobre;
+    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDPrincipal;
     private javax.swing.JMenu jMExibir;
     private javax.swing.JMenu jMLista;
     private javax.swing.JMenu jMSair;
+    private javax.swing.JMenu jMSobre;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
