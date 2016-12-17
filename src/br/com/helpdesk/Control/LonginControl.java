@@ -31,21 +31,21 @@ public class LonginControl extends ListenerAdapter {
         if (ae.getActionCommand().equals("Entra")) {
             if (model.login(view.getTxtSenha(), view.getTxtLogin()) == "tecnico") {
 
-                Usuario user = model.getuser(view.getTxtEmail());
+                Usuario user = new Usuario();
                 Tela_Primcipal telap = new Tela_Primcipal(user);
                 telap.setVisible(true);
                 view.dispose();
 
             } else if (model.login(view.getTxtSenha(), view.getTxtLogin()) == "comum") {
 
-                Usuario user = model.getuser(view.getTxtEmail());
+               Usuario user = new Usuario();
                 Tela_Primcipal telap = new Tela_Primcipal(user);
                 telap.getjMLista().setVisible(false);
                 telap.setVisible(true);
                 view.dispose();
 
             } else if ("".equals(view.getTxtSenha()) || "".equals(view.getTxtLogin())) {
-                JOptionPane.showMessageDialog(null, "Campus em branco");
+                JOptionPane.showMessageDialog(null, "Campos em branco");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos!!");
             }
@@ -53,7 +53,7 @@ public class LonginControl extends ListenerAdapter {
             view.setTxtLogin("");
             view.setTxtSenha("");
         } else if (ae.getActionCommand().equals("Criar Conta")) {
-            if(view.pegaJCAtende().getSelectedItem() == "Não"){
+            
             model.getUsuario().setNome(view.getTxtNome());
             model.getUsuario().setEmail(view.getTxtEmail());
             model.getUsuario().setCpf(view.getTxtCPF());
@@ -62,9 +62,7 @@ public class LonginControl extends ListenerAdapter {
             model.getUsuario().setTelefone(view.getTxtTelefone());
 
             model.getUsuario().setusuario(model.getUsuario());
-            }else{
-            
-            }
+          
         }else if(ae.getActionCommand().equals(view.pegaJCAtende().getSelectedItem())){
              if (view.pegaJCAtende().getSelectedItem() == "não") {
                 view.getTxtTecnico().enable(false);

@@ -103,14 +103,6 @@ public  class Usuario {
         this.areaatuacao = areaatuacao;
     }
 	
-	public boolean doLogin (String nome,String senha){
-		if (nome.equals(this.getNome()) && senha.equals(this.getSenha()) ) {
-                        this.logado = true;
-			return true;
-                }
-                return false;
-	}
-	
         public  boolean  isLogado(){
             return logado;
         };

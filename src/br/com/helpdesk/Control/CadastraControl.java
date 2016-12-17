@@ -44,6 +44,7 @@ public class CadastraControl implements ActionListener {
                 model.setTelefone(view.getTxtTelefone());
                 model.setSenha(view.getTxtSenha());
                 model.setAreaatuacao(view.getTxtAtuação());
+                JOptionPane.showMessageDialog(null, "Usuarios Cadastrado! Efetue o Login");
                 }else{
                     JOptionPane.showMessageDialog(null, "Senhas estão diferentes");
 

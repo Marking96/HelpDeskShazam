@@ -84,7 +84,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("HelpDesk");
+        setTitle("HelpDesk(BETA)");
 
         txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class LoginFrame extends javax.swing.JFrame {
         txtSenha.setText("jPasswordField1");
 
         jUserLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
-        jUserLabel.setText("Login: ");
+        jUserLabel.setText("Email: ");
 
         btEntra.setText("Entra");
         btEntra.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +169,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLConfSenha.setText("Confirma Senha:");
 
-        jLabel1.setText("Atende Chamdo: ");
+        jLabel1.setText("Atende Chamado: ");
 
         jBCadastra.setText("Criar Conta");
 
